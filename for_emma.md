@@ -10,7 +10,7 @@ After loading, you should be able to access five objects, one of which is a phyl
 >objects()
 [1] "ps"            "sample.names"  "samples.out"   "seqtab"        "seqtab.nochim"
 ```
-'ps' should be provide data on its contents (sample number, metadata variables, nucleotide sequences).
+'ps' should have data on its contents (sample number, metadata variables, nucleotide sequences).
 ```
 >ps
 phyloseq-class experiment-level object
