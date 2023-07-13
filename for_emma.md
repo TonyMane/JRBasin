@@ -86,4 +86,9 @@ A5-JRW2-LL05-Time1-1     0.002593932
 ```
 Prior to moving forward, we typically want to remove eukaryotic associated sequences from our samples.
 The phyloschuler package has commands that make this fairly easy. 
+```
+ps.clean <- ps %>%
+  taxa_prune("Chloroplast", "Order") %>%
+  taxa_prune("Mitochondria", "Family")
+```
 
