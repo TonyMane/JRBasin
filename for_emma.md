@@ -25,7 +25,7 @@ The 'tax_table' has taxonomic information for ASVs.
 The 'sample_data()' contains any metadata associated with your samples. Things like where the samples came from, when they were collected, 
 chemical/physical data if present.
 All of these data can be looked at, modified, exported. 
-Just as an example, lets just look at the beginning of an tax_table().
+Just as an example, lets just look at the beginning (or 'head') of the tax_table().
 ```
 >head(tax_table(ps))
 Taxonomy Table:     [6 taxa by 7 taxonomic ranks]:
