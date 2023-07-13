@@ -85,23 +85,5 @@ A4-JRW2-RR04-Time5-1     0.005103584
 A5-JRW2-LL05-Time1-1     0.002593932
 ```
 Prior to moving forward, we typically want to remove eukaryotic associated sequences from our samples.
-Phylosq has commands that make this fairly easy. 
-Chloroplasts and mitochondria are indicative of eukaryotic signal that we should remove. 
-the 'subset_taxa' command can be used extract specific taxa, or eliminate certain taxa, from an object.
-We will use the '!=' operator rather than the '==' operator, telling R to eliminate any ASVs associated with Chloroplasts. 
+The phyloschuler package has commands that make this fairly easy. 
 
-```
-> ps1 = subset_taxa(ps, Order != "Chloroplast")
-> ps1
-phyloseq-class experiment-level object
-otu_table()   OTU Table:         [ 56487 taxa and 75 samples ]
-sample_data() Sample Data:       [ 75 samples by 28 sample variables ]
-tax_table()   Taxonomy Table:    [ 56487 taxa by 7 taxonomic ranks ]
-refseq()      DNAStringSet:      [ 56487 reference sequences ]
-```
-Our original object had 73741 ASVs. After removing chloroplasts, it has 56487. 
-We also need remove mitochondria. These are typically identified at the Class level. 
-We could do this in two separte steps. However, it is probably better practice to perform in one command.
-```
-ps.clean <- ps %>% subset_taxa(Family!="Mitochondria" | is.na(Family) & Order != "Chloroplast"| is.na(Order))
-```
