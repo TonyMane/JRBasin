@@ -44,7 +44,7 @@ ASV4 NA
 ASV5 NA              
 ASV6 NA
 ```
-You can do the same thing for the 'meta_data', 'otu_table'.
+You can do the same thing for the 'sample_data', 'otu_table'.
 ```
 > head(sample_data(ps))
 Sample Data:        [6 samples by 28 sample variables]:
