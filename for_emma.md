@@ -137,3 +137,11 @@ F10-JRW2-06062022-RW04-2 B11-JRW1-04192022-IS02-2     A6-JRW2-LL05-Time5-1 B10-J
 C10-JRW3-08012022-RW01-1     E6-JRW2-LL05-Time7-2 D10-JRW3-08012022-LW05-1 
                   116138                   208431                   274858
 ```
+The aforementioned was just to get you familiarized with R/phyloseq... sorry if any of that was too basic.
+Anyhow! Now onto microviz. 
+Rather than look at 'all' the JRW at once, you might find it a bit more useful to just look at one time (but you don't have to, just a suggestion).
+If, for example, you wanted to re-create some of the ordinations i made that looking the stream channel samples and the wells from our
+first sampling trip in April 2022, you first extract all the sample associated with that sampling trip using the following:
+```
+JRW1 = subset_samples(ps.clean, Date == "JRW1")
+```
