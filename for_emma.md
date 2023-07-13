@@ -148,3 +148,7 @@ JRW1 = subset_samples(ps.rare, Date == "JRW1")
 Now you can try and put this through the validation/tax_fix commands provided in microviz.
 
 ```
+pseq <- JRW1 %>%
+  tax_fix() %>%
+  phyloseq_validate()
+```
