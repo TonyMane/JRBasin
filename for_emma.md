@@ -86,6 +86,8 @@ A5-JRW2-LL05-Time1-1     0.002593932
 ```
 Prior to moving forward, we typically want to remove eukaryotic associated sequences from our samples.
 The phyloschuler package has commands that make this fairly easy. 
+I don't have a reference for it, but chloroplasts and mitochondrial signals can be identified at the Order and Class levels
+respectively. 
 ```
 ps.clean <- ps %>%
   taxa_prune("Chloroplast", "Order") %>%
