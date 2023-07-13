@@ -1,8 +1,13 @@
-Open R-studio on macosx. 
+Open R-studio on macosx. Phyloseq, tidyverse and dplyr 'should' be installed (i think MicroViz/phyloseq require these).
+Also install the 'phyloschuyler' package, which is just a bunch of scripts/functions for manipulating phyloseq objects.
 ```
 >library(phyloseq)
 >library(tidyverse)
 >load("JRW_simplePhyloSeq_07102023.rds")
+>library(dplyr)
+>install.packages("remotes")
+remotes::install_github("schuyler-smith/phyloschuyler")
+>library(phyloschuyler)
 ```
 Note, i'm assuming that you are starting R-studio in your home directory, and that the JRW_simplePhyloSeq_07102023.rds file is present in that directory. 
 After loading, you should be able to access five objects, one of which is a phyloseq object called 'ps'.
