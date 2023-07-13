@@ -44,6 +44,8 @@ ASV4 NA
 ASV5 NA              
 ASV6 NA
 ```
+The taxonomic IDs of each ASV have been identified using a separate program (dada2, assignTaxonomy). That program 
+uses a naive baysian classifier to infer identity of each ASV using the SILVA rRNA gene database (version 138).
 You can do the same thing for the 'sample_data', 'otu_table'.
 ```
 > head(sample_data(ps))
