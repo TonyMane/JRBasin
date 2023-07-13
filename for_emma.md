@@ -152,3 +152,5 @@ pseq <- JRW1 %>%
   tax_fix() %>%
   phyloseq_validate()
 ```
+In the microviz tutorial, he is using the corncob package (signaled using corncob:::) and a phyloseq package contained within it (idb_phylo). 
+We replace 'corncob:::idb_phylo' with the phyloseq object we want to use (in this case i'm suggesting JRW1). 
