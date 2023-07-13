@@ -19,3 +19,28 @@ sample_data() Sample Data:       [ 75 samples by 28 sample variables ]
 tax_table()   Taxonomy Table:    [ 73741 taxa by 7 taxonomic ranks ]
 refseq()      DNAStringSet:      [ 73741 reference sequences ]
 ```
+You can see there are 75 samples and 73741 amplicon sequence variants (ASVs, or 'species'). 
+The 'otu_table()' could be called an 'ASV_table()'... basically the same thing. 
+The 'tax_table' has taxonomic information for ASVs.
+The 'sample_data()' contains any metadata associated with your samples. Things like where the samples came from, when they were collected, 
+chemical/physical data if present.
+All of these data can be looked at, modified, exported. 
+Just as an example, lets just look at the beginning of an tax_table().
+```
+>head(tax_table(ps))
+Taxonomy Table:     [6 taxa by 7 taxonomic ranks]:
+     Kingdom    Phylum          Class            Order              Family              Genus           
+ASV1 "Bacteria" "Bacteroidota"  "Bacteroidia"    "Flavobacteriales" "Flavobacteriaceae" "Flavobacterium"
+ASV2 "Bacteria" "Bacteroidota"  "Bacteroidia"    "Flavobacteriales" "Flavobacteriaceae" "Flavobacterium"
+ASV3 "Bacteria" "Cyanobacteria" "Cyanobacteriia" "Chloroplast"      NA                  NA              
+ASV4 "Bacteria" "Cyanobacteria" "Cyanobacteriia" "Chloroplast"      NA                  NA              
+ASV5 "Bacteria" "Cyanobacteria" "Cyanobacteriia" "Chloroplast"      NA                  NA              
+ASV6 "Bacteria" "Cyanobacteria" "Cyanobacteriia" "Chloroplast"      NA                  NA              
+     Species         
+ASV1 NA              
+ASV2 "saccharophilum"
+ASV3 NA              
+ASV4 NA              
+ASV5 NA              
+ASV6 NA
+```
