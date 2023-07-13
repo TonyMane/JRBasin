@@ -93,4 +93,46 @@ ps.clean <- ps %>%
   taxa_prune("Chloroplast", "Order") %>%
   taxa_prune("Mitochondria", "Family")
 ```
-
+Ok, now we have phyloseq object (ps.clean) that we can further manipulate. Its not uncommon in microbiome 
+analyses to rarefy to an even sequence depth. Or, at least remove samples with less than some number of sequences.
+You can get a sense of how deeply sequenced versus how poorly sequenced your ASV/sample table is with some simple base-R/phyloseq commands:
+```
+>sort(colSums(t(otu_table(ps.clean))))
+E4-JRW2-RR04-Time7-1     H4-JRW2-RR04-Time8-2     G4-JRW2-RR04-Time8-1     D4-JRW2-RR04-Time6-2 
+                       0                        0                        2                      102 
+E11-JRW1-04182022-RW04-2      H2-JRW1-R05-Time5-1 G11-JRW1-04192022-LL02-1     B8-JRW2-PC10-Time5-2 
+                     858                    13569                    14466                    16026 
+     E2-JRW1-R05-Time6-2      C2-JRW1-R05-Time7-2      F2-JRW1-R05-Time6-1      G2-JRW1-R05-Time5-2 
+                   18561                    18739                    19246                    19456 
+    G8-JRW2-PC10-Time8-1     H8-JRW2-PC10-Time8-2      B2-JRW1-R05-Time8-1    H11-SI-INLET-Postive3 
+                   20927                    22299                    23187                    24811 
+    H7-JRW2-PC10-Time4-2     E7-JRW2-PC10-Time3-1      A2-JRW1-R05-Time8-2     A8-JRW2-PC10-Time5-1 
+                   25278                    26305                    26351                    26606 
+    G7-JRW2-PC10-Time4-1     A7-JRW2-PC10-Time1-1     B7-JRW2-PC10-Time1-2      H6-SI-INLET-Postive 
+                   26813                    27737                    27846                    28113 
+    C7-JRW2-PC10-Time2-1     F9-SI-INLET-Postive2     F8-JRW2-PC10-Time7-2     D8-JRW2-PC10-Time6-2 
+                   28340                    30093                    31438                    32490 
+    G3-JRW2-RR04-Time4-1     C8-JRW2-PC10-Time6-1     F7-JRW2-PC10-Time3-2     D7-JRW2-PC10-Time2-2 
+                   32834                    35005                    35595                    36410 
+    G5-JRW2-LL05-Time4-1 C11-JRW1-04192022-RW08-2  G9-JRW2-06072022-PW01-1     F6-JRW2-LL05-Time8-1 
+                   38782                    40927                    42094                    42898 
+D11-JRW1-04192022-RW04-2     H5-JRW2-LL05-Time4-2 G10-JRW2-06062022-RW04-4  C9-JRW2-06092022-LW05-1 
+                   43794                    43874                    44354                    44468 
+    C6-JRW2-LL05-Time6-2 A11-JRW2-06062022-RW04-1     B4-JRW2-RR04-Time5-2     F5-JRW2-LL05-Time3-2 
+                   44596                    44600                    44646                    45131 
+    G6-JRW2-LL05-Time8-2     C5-JRW2-LL05-Time2-1     E8-JRW2-PC10-Time7-1     H3-JRW2-RR04-Time4-2 
+                   45771                    47197                    47350                    48312 
+E10-JRW1-04182022-RW08-2     B5-JRW2-LL05-Time1-2 H10-JRW2-06062022-RW04-3  H9-JRW3-08012022-PW03-1 
+                   48899                    51167                    52223                    54860 
+F11-JRW1-04192022-RW01-1     B3-JRW2-RR04-Time1-2     A3-JRW2-RR04-Time1-1     D6-JRW2-LL05-Time7-1 
+                   56163                    58457                    59022                    59485 
+F10-JRW2-06062022-RW04-2 B11-JRW1-04192022-IS02-2     A6-JRW2-LL05-Time5-1 B10-JRW3-08012022-LW03-2 
+                   60407                    61771                    62410                    62456 
+    B6-JRW2-LL05-Time5-2 A10-JRW3-08012022-RW04-1     E5-JRW2-LL05-Time3-1     D3-JRW2-RR04-Time2-2 
+                   63943                    64260                    65117                    66109 
+    F3-JRW2-RR04-Time3-2     A4-JRW2-RR04-Time5-1     A5-JRW2-LL05-Time1-1     D5-JRW2-LL05-Time2-2 
+                   72541                    74847                    80165                    81197 
+    C4-JRW2-RR04-Time6-1     C3-JRW2-RR04-Time2-1     F4-JRW2-RR04-Time7-2     E3-JRW2-RR04-Time3-1 
+                   81723                    86707                    97163                    99738 
+C10-JRW3-08012022-RW01-1     E6-JRW2-LL05-Time7-2 D10-JRW3-08012022-LW05-1 
+                  116138                   208431                   274858
