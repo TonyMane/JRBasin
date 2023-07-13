@@ -143,5 +143,8 @@ Rather than look at 'all' the JRW at once, you might find it a bit more useful t
 If, for example, you wanted to re-create some of the ordinations i made that looking the stream channel samples and the wells from our
 first sampling trip in April 2022, you first extract all the sample associated with that sampling trip using the following:
 ```
-JRW1 = subset_samples(ps.clean, Date == "JRW1")
+JRW1 = subset_samples(ps.rare, Date == "JRW1")
+```
+Now you can try and put this through the validation/tax_fix commands provided in microviz.
+
 ```
