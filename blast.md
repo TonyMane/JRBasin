@@ -53,5 +53,6 @@ The above line will in on tempest. However, its probably best practice to not ru
 
 ## Run 'man sbatch' for more information on the options above.
 
-diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o JRW_metaG_04182022_RW04.R1.fastq.nosZ
+diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o JRW_metaG_04182022_RW04.R1.fastq.nosZ
 ```
+If you copy and paste that into a file called 'blastx_practice.sh', and the modify
