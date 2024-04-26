@@ -18,4 +18,4 @@ conda install bioconda/label/cf201901::diamond
 
 ```
 Once installed, you'll need to have a file (a fasta file of proteins) to use as a database. For all the analyses i've been showing thus far (i.e. narG, norB, nosZ) have been generated using a pre-compiled set protein genes developed by Chris Greening's group in Australia. https://bridges.monash.edu/articles/online_resource/Compiled_Greening_lab_metabolic_marker_gene_databases/14431208
-Download this from the link and put onto your tempest home directory.
+Download this from the link and put onto your tempest home directory. Lets just start with a single protein sequence file to use as a database. Lets use nitrouse oxide reductase (nosZ), 'Nitrous oxide reductase NosZ sequences.fasta'.
