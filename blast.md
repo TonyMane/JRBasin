@@ -60,3 +60,19 @@ If you copy and paste that into a file called 'blastx_practice.sh', and then mod
 But getting back to the actual command we ran. The '-q' variable is the input metagenome. The database file is the '-d' parameter. The '-f' flage tells use to print the output in tab-delimited file.
 The '-k' flag tells use how many postive hits to print. I choose 1 here, because i am interested solely in evaluating the relative abundance of genes identified as a nosZ variant. The '--id' is the percent amino-acid identity that should be observed between a query sequence in the metagenome and a given protein in the database. This is probably one of the more important parameters to understand. At 70% id, we can be reasonably sure our postive hits are positive. However, there are some genes that have shared evolutionary trajectories, yet distinct functions, with other genes such that 70% is too low. This is the case of ammonia monooxygeneases and methane monooxygenases, I typically use tighter (i.e. high %ids). However, for most of the genes in the greening database (51 i think), 70% is a good threshold. The 'min-score' is a data-indepenendent cummulative score. If you want better explanations on bit-score/evalues, see:
 https://www.metagenomics.wiki/tools/blast/evalue
+
+I recommend at least looking at the output of the blast search:
+```
+head JRW_metaG_04182022_RW04.R1.fastq.nosZ
+```
+you should see something like this:
+VH00301:352:AAC73JMHV:1:1101:44438:2325 WP_009206857.1  70.0    50      15      0       1       150     426     475     4.6e-18 81.3
+VH00301:352:AAC73JMHV:1:1101:54834:6282 WP_068637089.1  86.0    50      7       0       151     2       192     241     2.1e-23 99.0
+VH00301:352:AAC73JMHV:1:1101:47846:8005 WP_041347318.1  77.6    49      11      0       149     3       571     619     1.8e-22 95.9
+VH00301:352:AAC73JMHV:1:1101:64566:9349 WP_011287329.1  81.6    49      9       0       3       149     685     733     3.2e-19 85.1
+VH00301:352:AAC73JMHV:1:1101:21280:11318        WP_041355904.1  92.0    50      4       0       150     1       443     492     8.7e-25 103.6
+VH00301:352:AAC73JMHV:1:1101:60685:12094        WP_041347318.1  77.6    49      11      0       149     3       571     619     1.8e-22 95.9
+VH00301:352:AAC73JMHV:1:1101:17322:13760        WP_027458136.1  86.0    50      7       0       2       151     296     345     9.0e-22 93.6
+VH00301:352:AAC73JMHV:1:1101:33588:14120        WP_015767852.1  96.0    50      2       0       2       151     260     309     1.0e-25 106.7
+VH00301:352:AAC73JMHV:1:1101:58772:17944        WP_009206857.1  95.9    49      2       0       3       149     112     160     6.0e-26 107.5
+VH00301:352:AAC73JMHV:1:1101:27529:18777        WP_012962813.1  72.0    50      14      0       151     2       199     248     8.4e-20 87.0
