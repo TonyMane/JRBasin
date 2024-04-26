@@ -55,4 +55,4 @@ The above line will in on tempest. However, its probably best practice to not ru
 
 diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o JRW_metaG_04182022_RW04.R1.fastq.nosZ
 ```
-If you copy and paste that into a file called 'blastx_practice.sh', and the modify
+If you copy and paste that into a file called 'blastx_practice.sh', and then modify the --acount (probably stephanieewing versus frankstewart), this script should work as is (assuming you have fastq file called JRW_metaG_04182022_RW04.R1.fastq, however, this could be one of the soil metagenomes as well, and you can change this to whatever you want to call it). 
