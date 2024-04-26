@@ -90,4 +90,6 @@ You should see:
 13422
 ```
 In the excel sheet i sent around, this would represent the 'Count' column. 
-There are numerous ways to normalize this number. One way is referred to as reads per-kilobase million sequences (i.e. RPMK).
+There are numerous ways to normalize this number. One way is referred to as reads per-kilobase million sequences (i.e. RPKM).
+This is pretty easy to do, but does not take into the underlying heterogeneity in average genome sizes (microbial genome sizes) observed between metagenomic samples. 
+
