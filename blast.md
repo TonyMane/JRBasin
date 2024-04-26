@@ -23,3 +23,9 @@ Download this from the link and put onto your tempest home directory. Lets just 
 ```
 diamond makedb --in Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta --db Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta.dmnd
 ```
+The output file with extension 'dmnd' is now searchable by diamond blastx, and we can evaluate nosZ gene frequencies/relative abundance in a metagenome(s). 
+The metagenome i'm using here is called 'JRW_metaG_04182022_RW04.R1.fastq'.
+
+```
+diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o JRW_metaG_04182022_RW04.R1.fastq.nosZ
+```
