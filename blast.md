@@ -21,5 +21,5 @@ Once installed, you'll need to have a file (a fasta file of proteins) to use as 
 Download this from the link and put onto your tempest home directory. Lets just start with a single protein sequence file to use as a database. Lets use nitrouse oxide reductase (nosZ), 'Nitrous oxide reductase NosZ sequences.fasta'.
 
 ```
-diamond makedb --in Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta -d Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta.dmnd
+diamond makedb --in Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta --db Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta.dmnd
 ```
