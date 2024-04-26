@@ -10,7 +10,11 @@ If its installed you should see
 
 Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 
+If you want see all the options associated with diamond, try 'diamond help'. Might be worth it at some point.
+If you don't have it installed, try the below.
+
 ```
 conda install bioconda/label/cf201901::diamond
 
 ```
+Once installed, you'll need to have a file (a fasta file of proteins) to use as a database. For all the analyses i've been showing thus far (i.e. narG, norB, nosZ) have been generated using a pre-compiled set protein genes developed by Chris Greening's group in Australia. https://bridges.monash.edu/articles/online_resource/Compiled_Greening_lab_metabolic_marker_gene_databases/14431208
