@@ -6,7 +6,7 @@ Installing should be fairly easy, it might already be installed. To see, just ty
 diamond
 Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 ```
-If its installed you should see:
+If its installed you should see \t
 Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 
 ```
