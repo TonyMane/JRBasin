@@ -91,5 +91,18 @@ You should see:
 ```
 In the excel sheet i sent around, this would represent the 'Count' column. 
 There are numerous ways to normalize this number. One way is referred to as reads per-kilobase million sequences (i.e. RPKM).
-This is pretty easy to do, but does not take into the underlying heterogeneity in average genome sizes (microbial genome sizes) observed between metagenomic samples. 
+This is pretty easy to do, but does not take into the underlying heterogeneity in average genome sizes (AGS) (microbial genome sizes) observed between metagenomic samples. 
+This can significantly alter the interpretation of gene count data. 
+A initial observation and report of AGS relevance: https://link.springer.com/article/10.1186/gb-2007-8-1-r10. 
+An initial method for correcting: https://www.nature.com/articles/ismej201029. 
+The most update method for correction: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0611-7.
+This last one also has a precompiled package called 'microbe_census' associated with its publication. I think you have this installed.
+To get this number, its not too difficult (just one command). On tempest, i installed this all installed in conda environment called microbe (i think we did this too with your environment?).
 
+```
+conda activate microbe
+```
+then, run:
+```
+run_microbe_census.py JRW_metaG_04182022_RW04.R1.fastq JRW_metaG_04182022_RW04.R1.fastq.mcs -t 24
+```
