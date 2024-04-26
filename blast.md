@@ -106,3 +106,13 @@ then, run:
 ```
 run_microbe_census.py JRW_metaG_04182022_RW04.R1.fastq JRW_metaG_04182022_RW04.R1.fastq.mcs -t 24
 ```
+the output of this file will have and id called 'genome_equivalents'.
+the number 'should' be 9824.08864035. to see, just do:
+```
+cat JRW_metaG_04182022_RW04.R1.fastq.mcs
+```
+or 
+```
+grep "genome_equivalents" JRW_metaG_04182022_RW04.R1.fastq.mcs
+```
+
