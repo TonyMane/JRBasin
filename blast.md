@@ -130,3 +130,5 @@ Note, in the excel sheet i sent over. the 'length' of the gene is actually in am
 to get the average base-pairs you would just multiply the amino acid number by 3 (3 bp per amino acid sequence).
 then to get to kilobasepairs, divide by the bp by 1000 (kbp). this is all done in the 'RPKG' column. 
 
+So of the 9824 genome equivilants, ~70% have a nosZ gene. This would mean the liklihood of us encountering a cell harboring this gene is quite high, and that the potential for nitrous oxide consumption is well represented throughout the community. 
+
