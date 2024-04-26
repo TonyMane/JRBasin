@@ -29,3 +29,29 @@ The metagenome i'm using here is called 'JRW_metaG_04182022_RW04.R1.fastq'.
 ```
 diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o JRW_metaG_04182022_RW04.R1.fastq.nosZ
 ```
+The above line will in on tempest. However, its probably best practice to not run this type of analysis on a head-node. Rather, you should probably use 'sbatch'. Below is what a pbs script would like:
+
+```
+#!/bin/bash
+##
+## example-array.slurm.sh: submit an array of jobs with a varying parameter
+##
+## Lines starting with #SBATCH are read by Slurm. Lines starting with ## are comments.
+## All other lines are read by the shell.
+##
+#SBATCH --account=priority-frankstewart        #specify the account to use
+#SBATCH --job-name=sample            # job name
+#SBATCH --partition=priority              # queue partition to run the job in
+#SBATCH --nodes=1                       # number of nodes to allocate
+#SBATCH --ntasks-per-node=1             # number of descrete tasks - keep at one except for MPI
+#SBATCH --cpus-per-task=16              # number of cores to allocate
+#SBATCH --mem=24G                     # 2000 MB of Memory allocated; set --mem with care
+#SBATCH --time=1-00:00:01                 # Maximum job run time
+##SBATCH --array=1-3                  # Number of jobs in array
+#SBATCH --output=example-%j.out
+#SBATCH --error=example-%j.err
+
+## Run 'man sbatch' for more information on the options above.
+
+diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o JRW_metaG_04182022_RW04.R1.fastq.nosZ
+```
