@@ -96,7 +96,8 @@ This can significantly alter the interpretation of gene count data.
 A initial observation and report of AGS relevance: https://link.springer.com/article/10.1186/gb-2007-8-1-r10. 
 An initial method for correcting: https://www.nature.com/articles/ismej201029. 
 The most update method for correction: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0611-7.
-This last one also has a precompiled package called 'microbe_census' associated with its publication. I think you have this installed.
+This last one also has a precompiled package called 'microbe_census' associated with its publication. 
+I think you have this installed. normalization of gene count data based on genome size (or equivilents) is often termed reads-per kilobase genome equivalent (RPKG).  
 To get this number, its not too difficult (just one command). On tempest, i installed this all installed in conda environment called microbe (i think we did this too with your environment?).
 
 ```
@@ -115,4 +116,14 @@ or
 ```
 grep "genome_equivalents" JRW_metaG_04182022_RW04.R1.fastq.mcs
 ```
+which should print:
+```
+genome_equivalents:     9824.08864035
+```
+Ok, to get the RPKG value for nosZ, we just do the following:
+RPKG= {gene count/gene size (in kilo bp)}/genome_equivalents
+the gene size for nosZ is ~1.9 kilobase pairs. 
+
+So here, RPKG_nosZ = {(13422)/(1.9)}/9824.08864035 = 0.7190703
+
 
