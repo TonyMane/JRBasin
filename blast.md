@@ -3,11 +3,13 @@ There are multiple types of blast. Nucleotide blast (blastn) queries a nucleotid
 Installing should be fairly easy, it might already be installed. To see, just type the following:
 
 ```
-$diamond
+diamond
 Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 ```
+If its installed you should see:
+Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 
 ```
-$conda install bioconda/label/cf201901::diamond
+conda install bioconda/label/cf201901::diamond
 
 ```
