@@ -85,3 +85,8 @@ Because each positive subject ID has one line assocaited with its postivive quer
 ```
 wc -l JRW_metaG_04182022_RW04.R1.fastq.nosZ
 ```
+You should see:
+```
+13422
+```
+In the excel sheet i sent around, this would represent the 'Count' column. 
