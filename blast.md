@@ -79,3 +79,9 @@ VH00301:352:AAC73JMHV:1:1101:58772:17944        WP_009206857.1  95.9    49      
 VH00301:352:AAC73JMHV:1:1101:27529:18777        WP_012962813.1  72.0    50      14      0       151     2       199     248     8.4e-20 87.0
 ```
 The first column is the subject ID (a sequence from your metagenomic search), the second is query from the database. The 3rd column is the percent-id. Note, nothing less that 70% (because thats the threshold we set the search at). I can never remember what columns 4-10 represent, but use this: https://www.metagenomics.wiki/tools/blast/blastn-output-format-6. Column 11 is the e-value (which look low, to be epected, typically want these below 1e-10), and the bit-score (again nothing lower than 50). 
+
+Because each positive subject ID has one line assocaited with its postivive query in the database, we can count the lines in this file using 'wc' (a simple unix command) to see how many sequences (or counts) associated with nosZ are present in this metagenome.
+
+```
+wc -l JRW_metaG_04182022_RW04.R1.fastq.nosZ
+```
