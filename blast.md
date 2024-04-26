@@ -126,4 +126,7 @@ the gene size for nosZ is ~1.9 kilobase pairs.
 
 So here, RPKG_nosZ = {(13422)/(1.9)}/9824.08864035 = 0.7190703
 
+Note, in the excel sheet i sent over. the 'length' of the gene is actually in amino acids.
+to get the average base-pairs you would just multiply the amino acid number by 3 (3 bp per amino acid sequence).
+then to get to kilobasepairs, divide by the bp by 1000 (kbp). this is all done in the 'RPKG' column. 
 
