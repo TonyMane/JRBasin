@@ -29,3 +29,12 @@ diamond blastx -q long_maxbin_output_CN_04_15_20230718_A1_6092_S1_L001_R1.001.fa
 #A for loop can be used to blast over several nucleotid files.
 for i in *.fna; do diamond blastx -q "$i" -d Particulate\ methane\ monooxygenase\ PmoA.fasta.dmnd -f 6 -o "$i".pmoA;
 ```
+The above prodigal commands are run using the default parameters, which are set fairly high (in my opinion).
+This means that the liklihood of false positives is also high. We can change this by decreasing the e-value threshold,
+increasing the percent identity required between a query and the database, and increasing the bit-score. 
+For most of the genes in the greening lab database file, an amino acid identity of at least 70% should be used.
+For some genes even higher (nxrA, narG, amoA variants). 
+
+```
+diamond blastx -q long_maxbin_output_CN_04_15_20230718_A1_6092_S1_L001_R1.001.fasta.fna -d Particulate\ methane\ monooxygenase\ PmoA.fasta.dmnd -f 6 --min-score 50 --id 70
+```
