@@ -14,3 +14,6 @@ prodigal -i long_maxbin_output_CN_04_15_20230718_A1_6092_S1_L001_R1.001.fasta -d
 #A simple loop to run prodigal over several genomes
 for i in *.fasta; do prodigal -i "$i" -d "$i".fna; done;
 ```
+Also installed diamond using mamba. This should run without having to load any other conda environments.
+Probably a good idea to read the manuscript associated with diamond.
+https://www.nature.com/articles/nmeth.3176
