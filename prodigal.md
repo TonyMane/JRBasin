@@ -38,3 +38,8 @@ For some genes even higher (nxrA, narG, amoA variants).
 ```
 diamond blastx -q long_maxbin_output_CN_04_15_20230718_A1_6092_S1_L001_R1.001.fasta.fna -d Particulate\ methane\ monooxygenase\ PmoA.fasta.dmnd -f 6 --min-score 50 --id 70
 ```
+to search across several gene files, using the below:
+
+```
+for i in *.fna; do diamond blastx -q "$i" -d Particulate\ methane\ monooxygenase\ PmoA.fasta.dmnd -f 6 --min-score 50 --id 70 -o "$i".pmoA; done;
+```
