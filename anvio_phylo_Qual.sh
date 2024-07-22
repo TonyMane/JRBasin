@@ -1,3 +1,5 @@
+source /home/v95j955/miniconda3/etc/profile.d/conda.sh
+conda activate anvio-dev
 #fixes the fasta file names, required for anvio.
 for i in *.fasta; 
 do anvi-script-reformat-fasta "$i" -o "$i".fixed.fa --simplify-names;
