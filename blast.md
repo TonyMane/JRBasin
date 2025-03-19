@@ -136,10 +136,10 @@ So of the 9824 genome equivilants, ~70% have a nosZ gene. This would mean the li
 We probably have lots of metagenomes we would like to do this type of analysis on. You could go one metagenome at a time. Or you run a for loop.
 Lets use some of the most recent 2024 JRW data in (TEMP_collab_directories/20250228_A_DNASeq_PE150) on tempest.
 If you change into this directory you should see n=14 'R1.fastq.gz' files. To run diamond-blastx on all these, you run the following:
-'''
+```
 cd /home/v95j955/20250228_A_DNASeq_PE150/
 for i in *R1.fastq.gz;
 do diamond blastx -q "$i" -d /home/v95j955/databases/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o "$i".nosZ;
 done;
-'''
+```
 
