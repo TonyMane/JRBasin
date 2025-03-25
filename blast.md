@@ -242,6 +242,6 @@ cat genome_equivalents
 ```
 We can now combine these output files into a single text file.
 ```
-cat sample_names genome_equivalents NosZ_Count.txt > gene_count_table.txt
+paste sample_names genome_equivalents NosZ_Count.txt > gene_count_table.txt
 ```
 
