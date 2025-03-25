@@ -193,4 +193,10 @@ We will want to put this into a text file, or copy and paste it into an excel sh
 Lets just put it into a text file.
 ```
 for i in *.nosZ; do sed -n '$=' "$i" > "$i"_count_nosZ ; done;
+
 ```
+Now combine all the counts into a single text file:
+```
+cat *_count_nosZ > NosZ_Count.txt
+```
+
