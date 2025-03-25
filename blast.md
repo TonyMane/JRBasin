@@ -118,15 +118,15 @@ which should print:
 ```
 genome_equivalents:     9824.08864035
 ```
-Ok, to get the RPKG value for nosZ, we just do the following:
+To get the RPKG value for nosZ, we just do the following:
 RPKG= {gene count/gene size (in kilo bp)}/genome_equivalents
-the gene size for nosZ is ~1.9 kilobase pairs. 
+the gene size for nosZ is ~1.9 kilobase pairs (the average amino acid length of all entries in the greening database). 
 
 So here, RPKG_nosZ = {(13422)/(1.9)}/9824.08864035 = 0.7190703
 
 Note, in the excel sheet i sent over. the 'length' of the gene is actually in amino acids.
 to get the average base-pairs you would just multiply the amino acid number by 3 (3 bp per amino acid sequence).
-then to get to kilobasepairs, divide by the bp by 1000 (kbp). this is all done in the 'RPKG' column. 
+then to get to kilobasepairs, divide by the bp by 1000 (kbp). this is all done in the 'RPKG' column. NosZ is 
 
 So of the 9824 genome equivilants, ~70% have a nosZ gene. This would mean the liklihood of us encountering a cell harboring this gene is quite high, and that the potential for nitrous oxide consumption is well represented throughout the community. 
 
