@@ -253,4 +253,5 @@ This should give you a table with three columns. To get the nosZ values in RPKG,
 
 ```
 nosZ_rpkg = (example_table$nosZ_count/(1.9))/example_table$genome_equivalents
+example_table <- cbind(example_table, nosZ_rpkg)
 ```
