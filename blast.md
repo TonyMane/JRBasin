@@ -7,9 +7,6 @@ Installing should be fairly easy, it might already be installed. To see, just ty
 diamond
 Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 ```
-If its installed you should see 
-
-Error: Syntax: diamond COMMAND [OPTIONS]. To print help message: diamond help
 
 If you want see all the options associated with diamond, try 'diamond help'. Might be worth it at some point.
 If you don't have it installed, try the below.
@@ -59,7 +56,7 @@ diamond blastx -q JRW_metaG_04182022_RW04.R1.fastq -d /home/v95j955/'Nitrous oxi
 If you copy and paste that into a file called 'blastx_practice.sh', and then modify the --acount (probably stephanieewing versus frankstewart), this script should work as is (assuming you have fastq file called JRW_metaG_04182022_RW04.R1.fastq, however, this could be one of the soil metagenomes as well, and you can change this to whatever you want to call it). 
 
 But getting back to the actual command we ran. The '-q' variable is the input metagenome. The database file is the '-d' parameter. The '-f' flage tells use to print the output in tab-delimited file.
-The '-k' flag tells use how many postive hits to print. I choose 1 here, because i am interested solely in evaluating the relative abundance of genes identified as a nosZ variant. The '--id' is the percent amino-acid identity that should be observed between a query sequence in the metagenome and a given protein in the database. This is probably one of the more important parameters to understand. At 70% id, we can be reasonably sure our postive hits are positive. However, there are some genes that have shared evolutionary trajectories, yet distinct functions, with other genes such that 70% is too low. This is the case of ammonia monooxygeneases and methane monooxygenases, I typically use tighter (i.e. high %ids). However, for most of the genes in the greening database (51 i think), 70% is a good threshold. The 'min-score' is a data-indepenendent cummulative score. If you want better explanations on bit-score/evalues, see:
+The '-k' flag tells use how many postive hits to print. I choose 1 here, because i am interested solely in evaluating the relative abundance of genes identified as a nosZ variant. The '--id' is the percent amino-acid identity that should be observed between a query sequence in the metagenome and a given protein in the database. This is probably one of the more important parameters to understand. At 70% id, we can be reasonably sure our postive hits are positive. However, there are some genes that have shared evolutionary trajectories, yet distinct functions, with other genes such that 70% is too low. This is the case of ammonia monooxygeneases and methane monooxygenases, I typically use high %IDs, 80-90% (i.e. high %ids). Michael Pester has looked at thresholds for these, especially amoA. However, for most of the genes in the greening database (51 i think), 70% is a good conservative threshold. The 'min-score' is a data-indepenendent cummulative score. If you want better explanations on bit-score/evalues, see:
 https://www.metagenomics.wiki/tools/blast/evalue
 
 I recommend at least looking at the output of the blast search:
@@ -133,7 +130,7 @@ then to get to kilobasepairs, divide by the bp by 1000 (kbp). this is all done i
 
 So of the 9824 genome equivilants, ~70% have a nosZ gene. This would mean the liklihood of us encountering a cell harboring this gene is quite high, and that the potential for nitrous oxide consumption is well represented throughout the community. 
 
-We probably have lots of metagenomes we would like to do this type of analysis on. You could go one metagenome at a time. Or you run a for loop.
+We probably have lots of metagenomes we would like to do this type of analysis on. You could go one metagenome at a time (sadly i've done this before). Or you run a for loop.
 Lets use some of the most recent 2024 JRW data in (TEMP_collab_directories/20250228_A_DNASeq_PE150) on tempest.
 If you change into this directory you should see n=14 'R1.fastq.gz' files. To run diamond-blastx on all these, you run the following:
 ```
@@ -141,5 +138,35 @@ cd /home/v95j955/20250228_A_DNASeq_PE150/
 for i in *R1.fastq.gz;
 do diamond blastx -q "$i" -d /home/v95j955/databases/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o "$i".nosZ;
 done;
+```
+Again, probably best to not run on the head node. So, use a bash script and submit to tempest:
+```
+#!/bin/bash
+##
+## example-array.slurm.sh: submit an array of jobs with a varying parameter
+##
+## Lines starting with #SBATCH are read by Slurm. Lines starting with ## are comments.
+## All other lines are read by the shell.
+##
+#SBATCH --account=priority-frankstewart        #specify the account to use
+#SBATCH --job-name=sample            # job name
+#SBATCH --partition=priority              # queue partition to run the job in
+#SBATCH --nodes=1                       # number of nodes to allocate
+#SBATCH --ntasks-per-node=1             # number of descrete tasks - keep at one except for MPI
+#SBATCH --cpus-per-task=16              # number of cores to allocate
+#SBATCH --mem=24G                     # 2000 MB of Memory allocated; set --mem with care
+#SBATCH --time=1-00:00:01                 # Maximum job run time
+##SBATCH --array=1-3                  # Number of jobs in array
+#SBATCH --output=example-%j.out
+#SBATCH --error=example-%j.err
+
+## Run 'man sbatch' for more information on the options above.
+cd /home/v95j955/20250228_A_DNASeq_PE150/
+for i in *R1.fastq.gz;
+do diamond blastx -q "$i" -d /home/v95j955/databases/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o "$i".nosZ;
+done;
+```
+We could also run a program called parrallel to submit several jobs at once to the compute node. In the above, blast is being run 1 metagenome and 1 database at a time. We'll get to that later.
+Once this is all done you should see 14 files with a .nosZ extension. We can use a line count function to see how many nosZ were identified in each metagenome:
 ```
 
