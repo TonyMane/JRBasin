@@ -220,6 +220,27 @@ Inside each of the files with an 'mcs_out' is the genome equivalents associated 
 to evalue RPKG numbers for each of our hits.
 
 ```
-grep "equivalents" /home/v95j955/20250228_A_DNASeq_PE150_ANALYSES/"$i".mcs_out > genome_equivalents
+grep "genome_equivalents" /home/v95j955/20250228_A_DNASeq_PE150_ANALYSES/"$i".mcs_out > genome_equivalents
 ```
+you should see the following if you 'cat' the output
+```
+cat genome_equivalents
+3975.829325
+3418.339344
+3030.791966
+2974.935799
+4261.310616
+3913.410452
+4228.416962
+3501.405405
+3655.91189
+4210.659479
+3032.313766
+2965.378618
+3838.104947
+3139.510053
+```
+We can now combine these output files into a single text file.
+```
+cat sample_names genome_equivalents NosZ_Count.txt > gene_count_table.txt
 
