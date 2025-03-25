@@ -199,4 +199,3 @@ Now combine all the counts into a single text file:
 ```
 cat *_count_nosZ > NosZ_Count.txt
 ```
-
