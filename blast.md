@@ -172,3 +172,21 @@ Again, i'm assuming that you are in the same directory as these output files.
 ```
 for i in *.nosZ; do sed -n '$=' "$i"; done;
 ```
+You should see results print to standard output, as per below:
+```
+3393
+4766
+5775
+2922
+3823
+3316
+2026
+3844
+7974
+2884
+4277
+4336
+2429
+1228
+```
+```
