@@ -213,7 +213,13 @@ We'll need microbe census results from all our metagenomes as well:
 ```
 cd /home/v95j955/20250228_A_DNASeq_PE150/
 for i in *R1.fastq.gz;
-do run_microbe_census.py "$i" /home/v95j955/20250228_A_DNASeq_PE150_ANALYSES/"$i".out -t 24;
+do run_microbe_census.py "$i" /home/v95j955/20250228_A_DNASeq_PE150_ANALYSES/"$i".mcs_out -t 24;
 done;
+```
+Inside each of the files with an 'mcs_out' is the genome equivalents associated with each metagenome. We'll need this
+to evalue RPKG numbers for each of our hits.
+
+```
+grep "equivalents" /home/v95j955/20250228_A_DNASeq_PE150_ANALYSES/"$i".mcs_out > genome_equivalents
 ```
 
