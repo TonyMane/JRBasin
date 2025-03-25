@@ -244,4 +244,13 @@ We can now combine these output files into a single text file.
 ```
 paste sample_names genome_equivalents NosZ_Count.txt > gene_count_table.txt
 ```
+We can now read this into R/R-studio.
+```
+example_table = read.csv("gene_count_table.txt", sep="\t", header=FALSE)
+colnames(example_table) <- c("genome_ID", "nosZ_count", "genome_equivalents")
+```
+This should give you a table with three columns. To get the nosZ values in RPKG, we'll do the following.
 
+```
+nosZ_rpkg = (example_table$nosZ_count/(1.9))/example_table$genome_equivalents
+```
