@@ -209,3 +209,9 @@ Need a column with names too.
 ```
 ls /home/v95j955/20250228_A_DNASeq_PE150/ | grep "R1" | sed 's/_R1.fastq.gz//g' > sample_names
 ```
+We'll need microbe census results from all our metagenomes as well:
+```
+cd /home/v95j955/20250228_A_DNASeq_PE150/
+for i in *R1.fastq.gz;
+do run_microbe_census.py "$i" /home/v95j955/20250228_A_DNASeq_PE150_ANALYSES/"$i".out -t 24;
+done;
