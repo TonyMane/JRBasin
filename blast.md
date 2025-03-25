@@ -167,6 +167,8 @@ do diamond blastx -q "$i" -d /home/v95j955/databases/greening/'Nitrous oxide red
 done;
 ```
 We could also run a program called parrallel to submit several jobs at once to the compute node. In the above, blast is being run 1 metagenome and 1 database at a time. We'll get to that later.
-Once this is all done you should see 14 files with a .nosZ extension. We can use a line count function to see how many nosZ were identified in each metagenome:
+Once this is all done you should see 14 files with a .nosZ extension. We can use a line count function to see how many nosZ were identified in each metagenome.
+Again, i'm assuming that you are in the same directory as these output files.
 ```
-
+for i in *.nosZ; do sed -n '$=' "$i"; done;
+```
