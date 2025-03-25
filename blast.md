@@ -168,12 +168,12 @@ Again, probably best to not run on the head node. So, use a bash script and subm
 ## Run 'man sbatch' for more information on the options above.
 cd /home/v95j955/20250228_A_DNASeq_PE150/
 for i in *R1.fastq.gz;
-do diamond blastx -q "$i" -d /home/v95j955/databases/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o "$i".nosZ;
+do diamond blastx -q "$i" -d /home/v95j955/databases/greening/'Nitrous oxide reductase NosZ sequences.fasta.dmnd' -f 6 -k 1 --id 70 --min-score 50 --query-cover 75 -o /home/v95j955/20250228_A_DNASeq_PE150_BLASTX/"$i".nosZ;
 done;
 ```
 We could also run a program called parrallel to submit several jobs at once to the compute node. In the above, blast is being run 1 metagenome and 1 database at a time. We'll get to that later.
 Once this is all done you should see 14 files with a .nosZ extension. We can use a line count function to see how many nosZ were identified in each metagenome.
-Again, i'm assuming that you are in the same directory as these output files.
+If needed, move into the directory '/home/v95j955/20250228_A_DNASeq_PE150_BLASTX' (or point towards this with your blast function).
 ```
 for i in *.nosZ; do sed -n '$=' "$i"; done;
 ```
