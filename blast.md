@@ -207,5 +207,5 @@ cat *_count_nosZ > NosZ_Count.txt
 This will eventually be a single column (of a total of n=3 columns for our small analysis). 
 Need a column with names too.
 ```
-ls | grep "R1" | sed 's/_R1.fastq.gz//g' > sample_names
+ls /home/v95j955/20250228_A_DNASeq_PE150/ | grep "R1" | sed 's/_R1.fastq.gz//g' > sample_names
 ```
