@@ -189,4 +189,8 @@ You should see results print to standard output, as per below:
 2429
 1228
 ```
+We will want to put this into a text file, or copy and paste it into an excel sheet. 
+Lets just put it into a text file.
+```
+for i in *.nosZ; do sed -n '$=' "$i" > "$i"_count_nosZ ; done;
 ```
