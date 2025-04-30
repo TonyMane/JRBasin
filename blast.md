@@ -255,3 +255,31 @@ This should give you a table with three columns. To get the nosZ values in RPKG,
 nosZ_rpkg = (example_table$nosZ_count/(1.9))/example_table$genome_equivalents
 example_table <- cbind(example_table, nosZ_rpkg)
 ```
+This is for looking at all nosZ together. However, you might want to look specifically at, say the frequency of one variant, or maybe a group of variants, in a database. The nosZ database we have been working with has been organized, or labeled, based on the relationships of each nosZ to one another (see Sanford et al. 2012 PNAS). This information has been noted in the sequence labels, or subject IDs. You should be able to see this when looking at the Greening lab nosZ database. For example, the first entry looks like this:
+```
+head
+WP_028175316.1 - Bradyrhizobium diazoefficiens - Typical
+MSDSDNIKGVSRRTLLGTTAAAAGVGLAGGAVITKDGAGFVSTADAQTKSAAPKAPPARPAVQKTEVAPGELDEYYVFFS
+SGQSGEMRIIGLPSMRELMRVPVFNRCSATGWGQTNESLKVLTEGMQPATREFLKNRGGTFMNGDLHHPHVSFTDGTYDG
+RYAFMNDKANSRVARVRLDVMKCDKIIELPNQHTVHGLRLQKYPRTGYVFCNGEDGVPLPNDGKVLDNPKEYHSIFTALD
+GDTMKVAWQVMVSGNLDNVDSDYQGKYCFSTCYNAEEGVTLAEMTANEQDWVVIFNLKRIEEAVKKGDFKEMNGVPVIDG
+RKGSPYTRYVPVSNNPHGMNTAPDGIHIVAAGKLSPTVTVMDVRLFDQLFDDKIKPRDVVVAEPELGLGPLHTAYDGKGN
+AYTTLFLDSQVVKWNIDLAKRAFKGEKVDPIIQKLDVHYQPGHNHSSMGQTKEADGKWLISLNKFSKDRFLNVGPLKPEN
+DQLIDISGDQMKLVHDGPSFAEPHDATIVHRSKINPISIWDRADPMFADAVKQAKADGINLEADSKIIRDGNKVRVYMTS
+TAPAFGLEQFQVKQGDQVTVYITNIDAVEDLTHGFCIVNYGIQMEVAPMATASVSFSADKAGVYWYYCSWFCHAMHMEMK
+GRMFVEPKSV
+```
+We can count the number of times a 'Typical' or 'Atypical' in each of our blast output files (from the first blast) using a few different strategies. The one i prefer uses 'blastdbcmd'. But to use it we need to format our database into a blast-readable database.
+For some weird reason that i can't figure out, blastdbcmd doesn't seem to like files that are named with spaces. For brevity, just do the below:
+```
+cp Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta NosZ.faa
+```
+now index 'NosZ.faa' so you run blastdbcmd over it:
+``
+makeblastdb -in NosZ.faa -parse_seqids -dbtype prot
+```
+As a simple example of what we can do, try the following:
+```
+blastdbcmd -entry_batch 20240528_RW04_3_R1.fastq.gz.nosZ.ids -db /home/v95j955/databases/greening/NosZ.faa -outfmt %t
+```
+this should print to output a long list of names. each line has the subject ID associated with a positive blast match from the first blastx we did above.
