@@ -275,7 +275,7 @@ For some weird reason that i can't figure out, blastdbcmd doesn't seem to like f
 cp Nitrous\ oxide\ reductase\ NosZ\ sequences.fasta NosZ.faa
 ```
 now index 'NosZ.faa' so you run blastdbcmd over it:
-``
+```
 makeblastdb -in NosZ.faa -parse_seqids -dbtype prot
 ```
 As a simple example of what we can do, try the following:
