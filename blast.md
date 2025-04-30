@@ -293,3 +293,6 @@ probably best to save to a file:
 ```
 blastdbcmd -entry_batch 20240528_RW04_3_R1.fastq.gz.nosZ.ids -db /home/v95j955/databases/greening/NosZ.faa -outfmt %t -out 20240528_RW04_3_R1.fastq.gz.nosZ.ids.names
 ```
+Now we can use grep to see how many Atypical or Typical variants are present.
+```
+grep -c "Typical" 20240528_RW04_3_R1.fastq.gz.nosZ.ids.names
