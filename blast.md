@@ -278,8 +278,18 @@ now index 'NosZ.faa' so you run blastdbcmd over it:
 ```
 makeblastdb -in NosZ.faa -parse_seqids -dbtype prot
 ```
-As a simple example of what we can do, try the following:
+The blastx (diamond blastx) results from before can now be used to retrieve subject IDs.
+These IDs can then be fed into a grep.
+
+
+As a simple example of what we can do, try the following (one line at a time):
 ```
+#we only want the subject IDs. so use 'cut' to get these from the last blast output and put them in a file.
+cut -f 2 20240528_RW04_3_R1.fastq.gz.nosZ > 20240528_RW04_3_R1.fastq.gz.nosZ.ids
 blastdbcmd -entry_batch 20240528_RW04_3_R1.fastq.gz.nosZ.ids -db /home/v95j955/databases/greening/NosZ.faa -outfmt %t
 ```
-this should print to output a long list of names. each line has the subject ID associated with a positive blast match from the first blastx we did above.
+this should print to output a long list of names. 
+probably best to save to a file:
+```
+blastdbcmd -entry_batch 20240528_RW04_3_R1.fastq.gz.nosZ.ids -db /home/v95j955/databases/greening/NosZ.faa -outfmt %t -out 20240528_RW04_3_R1.fastq.gz.nosZ.ids.names
+```
