@@ -296,3 +296,22 @@ blastdbcmd -entry_batch 20240528_RW04_3_R1.fastq.gz.nosZ.ids -db /home/v95j955/d
 Now we can use grep to see how many Atypical or Typical variants are present.
 ```
 grep -c "Typical" 20240528_RW04_3_R1.fastq.gz.nosZ.ids.names
+grep -c "Atypical" 20240528_RW04_3_R1.fastq.gz.nosZ.ids.names
+```
+you should see numbers print to standard output. 
+we can use a series of for loops run the above over all our blast-files:
+```
+for i in *nosZ; do cut -f 2 "$i" > "$i".ids; done;
+for i in *nosZ.ids; do blastdbcmd -entry_batch "$i" -outfmt %t -db /home/v95j955/databases/greening/NosZ.faa -out "
+$i".names; done;
+```
+You can run the above grep commands over all the files as well, save to an outputfile:
+```
+grep -c "Typical" *nosZ.ids.names
+grep -c "Atypical" *nosZ.ids.names
+```
+You can make these into lists that can be readinto R with by converting the ':' to a tab, then saving to a file.
+```
+grep -c "Atypical" *nosZ.ids.names | sed 's/:/\t/g' > Atypical_counts.txt
+grep -c "Typical" *nosZ.ids.names | sed 's/:/\t/g' > Typical_counts.txt
+```
